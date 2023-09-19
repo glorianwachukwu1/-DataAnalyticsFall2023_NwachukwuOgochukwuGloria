@@ -14,21 +14,25 @@ EPI_data
 
 
 #To view table and check if the heading has been fixed
+
 View(EPI_data)
 
 #sets the 'default' object
 attach(EPI_data)
 
-
-# launches a simple data editor – test it!
 fix(EPI_data)
 
 # prints out values
 EPI <- EPI_data$EPI
 
-# records True values if the value is NA
+#records True values if the value is NA
 
-#vhhk.bjsnl;m
+tf <- is.na(EPI)
+View (tf)
+
+#filters out NA values, new array
+E <- EPI[!tf]
+
 
 
 
