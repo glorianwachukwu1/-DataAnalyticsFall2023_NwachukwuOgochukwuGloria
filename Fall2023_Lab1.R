@@ -24,7 +24,14 @@ attach(EPI_data)
 fix(EPI_data)
 
 # prints out values
-EPI<- EPI_data$EPI
+EPI <- EPI_data$EPI
+
+# records True values if the value is NA
+
+#vhhk.bjsnl;m
+
+
+
 
 
 #okay
