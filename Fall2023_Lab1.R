@@ -106,17 +106,22 @@ x <- seq(30, 95, 1)
 
 # For t-distribution Q-Q plot (with 5 degrees of freedom)
 qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
-qqline(x)
 
-……………………………………………………………
+qqline(x)
 
 #Using BIODIVERSITY column for the exercise
 BIODIVERSITY <- as.numeric(EPI_data$ BIODIVERSITY)
+
 t <- is.na(BIODIVERSITY)
+
 BIODIVERSITY [!t]
+
 summary(BIODIVERSITY)
+
 fivenum(BIODIVERSITY)
+
 stem(BIODIVERSITY)
+
 hist(BIODIVERSITY)
 
 # To create the density plot over a histogram with specified breaks
@@ -142,10 +147,9 @@ qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
 qqline(x)
 
 
-
 help(boxplot)
 
-# Boxplot (CLIMATE)
+# boxplot (CLIMATE)
 boxplot(CLIMATE, main = "Boxplot of CLIMATE", ylab = "Values")
 
 
@@ -179,9 +183,7 @@ EPI_data <- type.convert(EPI_data, as.is = TRUE)
 
 variables <- c("EPI", "ENVHEALTH", "ECOSYSTEM", "DALY", "AIR_H", "WATER_H", "WATER_E", "BIODIVERSITY")
 
-for (var in variables) {
-  EPI_data[[var]] <- as.numeric(EPI_data[[var]])
-}
+for(var in variables) {EPI_data[[var]] <- as.numeric(EPI_data[[var]])}
 
 boxplot(EPI_data[, variables], las=2)
 title("Combined Boxplot")
@@ -190,14 +192,11 @@ title("Combined Boxplot")
 
 par(mfrow=c(2, 4), mar=c(4, 4, 2, 1))
 
-for (var in variables) {
-  valid_values <- EPI_data[[var]][!is.na(EPI_data[[var]]) & !is.infinite(EPI_data[[var]])]
-  hist(valid_values, main=var, xlab=var, probability = TRUE, breaks=20, col='yello', border='pink)
-}
+for (var in variables) {valid_values <- EPI_data[[var]][!is.na(EPI_data[[var]]) & !is.infinite(EPI_data[[var]])]
+  hist(valid_values, main=var, xlab=var, probability = TRUE, breaks=20, col='yellow', border='pink')}
 
 ##Using Kernel Density Plots for the distributions
-for (var in variables) {
-  valid_values <- EPI_data[[var]][!is.na(EPI_data[[var]]) & !is.infinite(EPI_data[[var]])]
+for (var in variables) {valid_values <- EPI_data[[var]][!is.na(EPI_data[[var]]) & !is.infinite(EPI_data[[var]])]
   dens <- density(valid_values)
   plot(dens, main=var, xlab=var, col='blue', lwd=2)
   polygon(dens, col="skyblue", border="blue")
@@ -214,36 +213,29 @@ hist(ELand, breaks = seq(30., 95., 1.0), prob = TRUE, main = "Histogram of ELand
 ##Boxplot
 boxplot(ELand, main = "Boxplot of ELand", ylab = "ELand")
 
-##Density Plot
-dens <- density(ELand)
-plot(dens, main = "Density Plot of ELand", xlab = "ELand", col = 'blue', lwd = 2)
-polygon(dens, col = "yellow", border = "pink")
-#Q-Q plot
-qqnorm(ELand, main = "Q-Q Plot of ELand")
-qqline(ELand, col = "purple")
-
 
 ## Plotting for No_surface water, desert and high_population
 
 variable_names <- c('No_surface_water', 'Desert', 'High_Population_Density')
 
 for (variable_name in variable_names) {
-  for (condition in 0:1) {
-    # Filtering the values based on the condition (0 or 1)
-    VarLand <- EPI_data$EPI[EPI_data[[variable_name]] == condition]
+for (condition in 0:1) {
+
+# Filtering the values based on the condition (0 or 1)
+VarLand <- EPI_data$EPI[EPI_data[[variable_name]] == condition]
     
-    # Boxplot
-    boxplot(ELand, main = paste("Boxplot of", variable_name, "under condition", condition), ylab = variable_name)
+# Boxplot
+boxplot(ELand, main = paste("Boxplot of", variable_name, "under condition", condition), ylab = variable_name)
     
-    # Histogram with default breaks
-    hist(ELand, main = paste("Histogram of", variable_name, "under condition", condition), xlab = variable_name)
+# Histogram with default breaks
+hist(ELand, main = paste("Histogram of", variable_name, "under condition", condition), xlab = variable_name)
     
-    # Histogram with specified breaks and density
-    hist(ELand, breaks = seq(30., 95., 1.0), probability = TRUE, main = paste("Histogram of", variable_name, "with Specified Breaks under condition", condition), xlab = variable_name)
+# Histogram with specified breaks and density
+hist(ELand, breaks = seq(30., 95., 1.0), probability = TRUE, main = paste("Histogram of", variable_name, "with specified Breaks under condition", condition), xlab = variable_name)
     
-    # Q-Q plot
-    qqnorm(ELand, main = paste("Q-Q Plot of", variable_name, "under condition", condition))
-    qqline(ELand, col = "yellow")
+# Q-Q plot
+qqnorm(ELand, main = paste("Q-Q Plot of", variable_name, "under condition", condition))
+qqline(ELand, col = "yellow")
   }
 }
 
