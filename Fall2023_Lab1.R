@@ -38,15 +38,16 @@ View (E)
 
 
 
-#Exercise 1 - Exploring the distribtion
+#Exercise 1 - Exploring the distribtion (Histogram diagram of the EPI)
 
 summary(EPI)
 
 fivenum(EPI,na.rm=TRUE)
 
-Stem(EP1)
+stem(EPI)
 
 hist(EPI)
+
 
 hist(EPI,seq(30.,95.,1.0),probability=TRUE)
 
@@ -59,15 +60,16 @@ help(stem)
 
 #Exercise 1: fitting a distribution beyond histograms
 
+#Diagram of ecdf(EFI)
 
-plot(ecdf(EPI), do.points=FALSE, verticals = TRUE)
+plot(ecdf(EPI),do.points=FALSE, verticals = TRUE)
 
 par(pty="s")
 qqnorm(EPI); qqline(EPI)
+
 x <- seq(30, 95, 1)
-theoretical_quantiles <- qnorm(ppoints(length(x)))
-qqplot(theoretical_quantiles, sort(x))
-abline(a = 0, b = 1, col = "red")
+
+#Q-Q plot
 
 qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
 qqline(x)
