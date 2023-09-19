@@ -18,7 +18,6 @@ View(EPI_data)
 #sets the 'default' object
 attach(EPI_data)
 
-
 # launches a simple data editor – test it!
 fix(EPI_data)
 
@@ -28,15 +27,11 @@ EPI <-EPI_data$EPI
 # records True values if the value is NA
 
 tf<-is.na(EPI_data)
-
 View (tf)
 
 # filters out NA values, new array
 E<- EPI[!tf]
-
 View (E)
-
-
 
 #Exercise 1 - Exploring the distribtion (Histogram diagram of the EPI)
 
@@ -75,8 +70,6 @@ qqplot(qt(ppoints(250),df=5),x,xlab = "Q-Q plot for t dsn" )
 #line that crosses the plot of the Q-Q
 qqline(x)
 
-
-
 #Using CLIMATE column for the exercise
 CLIMATE <- as.numeric(EPI_data$CLIMATE)
 t <- is.na(CLIMATE)
@@ -113,15 +106,11 @@ qqline(x)
 BIODIVERSITY <- as.numeric(EPI_data$ BIODIVERSITY)
 
 t <- is.na(BIODIVERSITY)
-
 BIODIVERSITY [!t]
 
 summary(BIODIVERSITY)
-
 fivenum(BIODIVERSITY)
-
 stem(BIODIVERSITY)
-
 hist(BIODIVERSITY)
 
 # To create the density plot over a histogram with specified breaks
@@ -146,7 +135,6 @@ x <- seq(30, 95, 1)
 qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
 qqline(x)
 
-
 help(boxplot)
 
 # boxplot (CLIMATE)
@@ -157,9 +145,7 @@ HELP(boxplot)
 # Boxplot (BIODIVERSITY)
 boxplot(BIODIVERSITY, main = "Boxplot of BIODIVERSITY", ylab = "Values")
 
-
 #comparing Climate and Biodiversity distribution
-
 #comparing with boxplot
 boxplot(CLIMATE,BIODIVERSITY)
 
@@ -202,19 +188,17 @@ for (var in variables) {valid_values <- EPI_data[[var]][!is.na(EPI_data[[var]]) 
   polygon(dens, col="skyblue", border="blue")
 }
 
-##Filtering
-
+#Filtering
 EPILand <- EPI_data$EPI[EPI_data$Landlock == 1]
 ELand <- EPILand[!is.na(EPILand)]
 ##Plotting the histogram
 hist(ELand, main = "Histogram of ELand", xlab = "ELand")
 hist(ELand, breaks = seq(30., 95., 1.0), prob = TRUE, main = "Histogram of ELand with Specified Breaks", xlab = "ELand")
 
-##Boxplot
+#Boxplot
 boxplot(ELand, main = "Boxplot of ELand", ylab = "ELand")
 
-
-## Plotting for No_surface water, desert and high_population
+# Plotting for No_surface water, desert and high_population
 
 variable_names <- c('No_surface_water', 'Desert', 'High_Population_Density')
 
@@ -289,7 +273,6 @@ boxplot(water_treatment$`PH-E`, main="Boxplot of PH-E", ylab="Values")
 
 # histogram for "PH-E"
 hist(water_treatment$`PH-E`, main="Histogram of PH-E", xlab="Values", breaks=20)
-
 
 # Filtering of PH-E values
 specific_range_data <- subset(water_treatment, `PH-E` >= 7 & `PH-E` <= 8)
