@@ -139,10 +139,10 @@ par(pty="s")
 
 qqnorm(CLIMATE); qqline(CLIMATE)
 
-#  To make a Q-Q plot against the generating distribution 
+#To make a Q-Q plot against the generating distribution 
 x <- seq(30, 95, 1)
 
-# For t-distribution Q-Q plot (with 5 degrees of freedom)
+#For t-distribution Q-Q plot (with 5 degrees of freedom)
 qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
 qqline(x)
 
