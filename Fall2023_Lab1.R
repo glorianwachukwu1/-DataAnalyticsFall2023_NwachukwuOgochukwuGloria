@@ -278,10 +278,9 @@ hist(water_treatment$`PH-E`, main="Histogram of PH-E", xlab="Values", breaks=20)
 # Filtering of PH-E values
 specific_range_data <- subset(water_treatment, `PH-E` >= 7 & `PH-E` <= 8)
 View(specific_range_data)
-
 # Q-Q plot for "PH-E"
 qqnorm(water_treatment$`PH-E`, main="Q-Q Plot of PH-E")
-qqline(water_treatment$`PH-E`, col="red")
+
 
 
                     
