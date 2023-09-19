@@ -23,6 +23,10 @@ attach(EPI_data)
 # launches a simple data editor – test it!
 fix(EPI_data)
 
+# prints out values
+EPI<- EPI_data$EPI
+
+
 #okay
 
 
