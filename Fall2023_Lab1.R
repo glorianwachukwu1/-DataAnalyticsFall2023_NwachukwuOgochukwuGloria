@@ -70,9 +70,84 @@ qqnorm(EPI); qqline(EPI)
 x <- seq(30, 95, 1)
 
 #Q-Q plot
+qqplot(qt(ppoints(250),df=5),x,xlab = "Q-Q plot for t dsn" )
 
+#line that crosses the plot of the Q-Q
+qqline(x)
+
+
+
+#Using CLIMATE column for the exercise
+CLIMATE <- as.numeric(EPI_data$CLIMATE)
+t <- is.na(CLIMATE)
+CLIMATE [!t]
+summary(CLIMATE)
+fivenum(CLIMATE)
+stem(CLIMATE)
+hist(CLIMATE)
+
+# To create the density plot over a histogram with specified breaks
+data_range <- range(CLIMATE, na.rm = TRUE)
+
+# Create a histogram using the breaks
+hist(CLIMATE, seq(30., 95., 1.0), prob=TRUE)
+lines(density(CLIMATE, na.rm = TRUE, bw=1.))
+
+# For empirical cumulative distribution function (ecdf) of CLIMATE
+plot(ecdf(CLIMATE), do.points=FALSE, verticals = TRUE)
+
+# for Quantile-Quantile (Q-Q) plot for a normal distribution
+par(pty="s")
+
+qqnorm(CLIMATE); qqline(CLIMATE)
+
+#  To make a Q-Q plot against the generating distribution 
+x <- seq(30, 95, 1)
+
+# For t-distribution Q-Q plot (with 5 degrees of freedom)
 qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
 qqline(x)
+
+……………………………………………………………
+
+#Using BIODIVERSITY column for the exercise
+BIODIVERSITY <- as.numeric(EPI_data$ BIODIVERSITY)
+t <- is.na(BIODIVERSITY)
+BIODIVERSITY [!t]
+summary(BIODIVERSITY)
+fivenum(BIODIVERSITY)
+stem(BIODIVERSITY)
+hist(BIODIVERSITY)
+
+# To create the density plot over a histogram with specified breaks
+data_range <- range(BIODIVERSITY, na.rm = TRUE)
+
+# Create a histogram using the breaks
+hist(BIODIVERSITY, seq(30., 95., 1.0), prob=TRUE)
+lines(density(BIODIVERSITY, na.rm = TRUE, bw=1.))
+
+# For empirical cumulative distribution function (ecdf) of BIODIVERSITY
+plot(ecdf(BIODIVERSITY), do.points=FALSE, verticals = TRUE)
+
+# for Quantile-Quantile (Q-Q) plot for a normal distribution
+par(pty="s")
+
+qqnorm(CLIMATE); qqline(CLIMATE)
+
+#  To make a Q-Q plot against the generating distribution 
+x <- seq(30, 95, 1)
+
+# For t-distribution Q-Q plot (with 5 degrees of freedom)
+qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t dsn" )
+qqline(x)
+
+
+
+
+
+
+EPI_data<-read.csv("~/DATA ANALYTICS/LAB/EPI/2016EPI_data.csv")
+#.........................
 
 View(EPI_data)
 ## Since DALY is a column
