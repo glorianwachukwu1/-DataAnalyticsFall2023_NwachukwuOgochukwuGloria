@@ -69,6 +69,8 @@ qqplot(qt(ppoints(250),df=5),x,xlab = "Q-Q plot for t dsn" )
 
 #line that crosses the plot of the Q-Q
 qqline(x)
+View (EPI_data)
+EPI_data<-read.csv("~/DATA ANALYTICS/LAB/EPI/2010EPI_data.csv")
 
 #Using CLIMATE column for the exercise
 CLIMATE <- as.numeric(EPI_data$CLIMATE)
@@ -104,7 +106,6 @@ qqline(x)
 
 #Using BIODIVERSITY column for the exercise
 BIODIVERSITY <- as.numeric(EPI_data$ BIODIVERSITY)
-
 t <- is.na(BIODIVERSITY)
 BIODIVERSITY [!t]
 
@@ -224,19 +225,19 @@ qqline(ELand, col = "yellow")
 }
 
 # Filter data for an EPI region
-EPI_region_data1 <- subset(EPI_data, EPI_regions == 'Europe')
-View(EPI_region_data1)
+EPI_region_data <- subset(EPI_data,EPI_regions == 'Europe')
+View(EPI_region_data)
 
 # Filter data for a  GEO subregion
 GEO_subregion_data <- subset(EPI_data, GEO_subregion == 'North America')
 View(GEO_subregion_data)
 
 # Viewing summary statistics for the EPI column for the region and subregion
-summary(EPI_region_data1$EPI)
+summary(EPI_region_data$EPI)
 summary(GEO_subregion_data$EPI)
 
 # region or subregion
-hist(EPI_region_data1$EPI, main = "Histogram for North America EPI Region", xlab = "EPI")
+hist(EPI_region_data$EPI, main = "Histogram for North America EPI Region", xlab = "EPI")
 hist(GEO_subregion_data$EPI, main = "Histogram for South America GEO Subregion", xlab = "EPI")
 install.packages("raster")
 install.packages("rgdal")
