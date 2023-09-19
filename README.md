@@ -13,4 +13,7 @@ Finally had to restart the app and everything is working fine.
 completed the  fitting a distribution exercise. 
 it was pretty much straightforward since I used Climate and Biodiversity data from the table.
 
-Resources - Class presentation slides and https://cran.r-project.org/
+Resources - 
+    Class presentation slides 
+    https://www.w3schools.com/r/
+    https://cran.r-project.org/
