@@ -12,28 +12,37 @@ EPI_data <- EPI_data[-1,]
 EPI_data[]<- lapply(EPI_data, function(x) type.convert(as.character(x)))
 EPI_data
 
-
 #To view table and check if the heading has been fixed
-
 View(EPI_data)
 
 #sets the 'default' object
 attach(EPI_data)
 
+
+# launches a simple data editor – test it!
 fix(EPI_data)
 
 # prints out values
 EPI <- EPI_data$EPI
 
-#records True values if the value is NA
+# records True values if the value is NA
 
-tf <- is.na(EPI)
+tf<-is.na(EPI_data)
+
 View (tf)
 
-#filters out NA values, new array
-E <- EPI[!tf]
+# filters out NA values, new array
+E<- EPI[!tf]
+
+View (E)
 
 
+
+#Exercise 1 - Exploring the distribtion
+
+summary(EPI)
+
+fivenum(EPI,na.rm=TRUE)
 
 
 
