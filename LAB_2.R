@@ -84,7 +84,7 @@ qplot(factor(mtcars$cyl))
 
 
 #Bar graphs of counts
-qplot(factor(cyl) data = mtcars)
+qplot(factor(cyl), data = mtcars)
 ggplot(mtcars,aes(x=factor(cyl))) + geom_bar()
 
 
@@ -112,7 +112,7 @@ qplot(supp, len, data = ToothGrowth,geom = "boxplot")
 
 ggplot(ToothGrowth, aes(x= supp, y=len))+geom_boxplot()
 
-qplot(interaction(ToothGrow$supp, ToothGrow$dose), ToothGrow$len, geom = "boxplot")
+qplot(interaction(ToothGrowth$supp, ToothGrowth$dose), ToothGrowth$len, geom = "boxplot")
 
 ggplot(interaction(supp, dose), len, data = ToothGrowth,geom = "boxplot")
 
