@@ -6,10 +6,12 @@ library(ggplot2)
 library(dplyr)
 library(styler)
 library(nortest)
+library(ISLR)
 
 
+#I choose seven datasets wich is nyt3 to nyt9 form analysis
 
-#import nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, nyt9 dataset
+#import and view nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, nyt9 dataset
 library(readr)
 
 #nyt3
@@ -41,17 +43,9 @@ View(nyt8)
 nyt9 <- read_csv("DATA_ANALYTICS/Assignment/Assignment 3/nytimes/nyt9.csv")
 View(nyt9)
 
-#to clean my data and remove missing values
-nyt3 <- na.omit(nyt3)
-nyt4 <- na.omit(nyt4)
-nyt5 <- na.omit(nyt5)
-nyt6 <- na.omit(nyt6)
-nyt7 <- na.omit(nyt7)
-nyt8 <- na.omit(nyt8)
-nyt9 <- na.omit(nyt9)
+
 
 #Boxplot of nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, nyt9 with Age and Impressions
-
 
 #boxplot nyt3
 head(nyt3)
@@ -62,6 +56,9 @@ boxplot (nyt3$Age, nyt3$Impressions,
 
 summary(nyt3$Age)
 summary(nyt3$Impressions)
+#In Age, majority of the data falls within the range of 0 to 48, as indicated by the first and third quartiles. The median age is 31, and the mean age is approximately 29.47. 
+#In Impressions, most of the data is clustered between 3 and 6 impressions. 
+
 
 
 #boxplot of nyt4
@@ -72,6 +69,9 @@ boxplot (nyt4$Age, nyt4$Impressions,
          col = c("green", "pink"))
 summary(nyt4$Age)
 summary(nyt4$Impressions)
+#The age distribution has a minimum of 0, a maximum of 108, and is centered around the median and mean of 31 and 29.43, respectively. 
+#Impressions range from 0 to 18, with a median of 5 and a slightly higher mean of 5.004 compared to nyt3.
+
 
 
 #boxplot of nyt5
@@ -82,6 +82,9 @@ boxplot (nyt5$Age, nyt5$Impressions,
          col = c("purple", "brown"))
 summary(nyt5$Age)
 summary(nyt5$Impressions)
+#Age has a median of 31, mean of 29.43, and a range from 0 to 106. 
+#Impressions also follow a similar pattern, with a median of 5.
+
 
 
 #boxplot of  nyt6
@@ -92,6 +95,9 @@ boxplot (nyt6$Age, nyt6$Impressions,
          col = c("red", "black"))
 summary(nyt6$Age)
 summary(nyt6$Impressions)
+#Age has a median of 31, a mean of 29.46, and a range from 0 to 106. 
+#Impressions have a median of 5 and a mean of 4.995, similar to previous datasets.
+
 
 
 #boxplot of nyt7
@@ -102,6 +108,8 @@ boxplot (nyt7$Age, nyt7$Impressions,
          col = c("blue", "yellow"))
 summary(nyt7$Age)
 summary(nyt7$Impressions)
+#Age has a median of 31, a mean of 29.52, and a range from 0 to 112. Impressions has a median of 5 and a mean of 5.
+
 
 
 #boxplot of nyt8
@@ -112,6 +120,9 @@ boxplot (nyt8$Age, nyt8$Impressions,
          col = c("green", "blue"))
 summary(nyt8$Age)
 summary(nyt8$Impressions)
+#The Age variable the median (31.00) being slightly less than the mean (29.41). The 3rd quartile (48.00) is greater than the median, indicating the presence of potential outliers on the higher end of the data.
+#In Impressions variable the median (5) is slightly less than the mean (5.001). The 3rd quartile (6) is greater than the median, suggesting possible outliers on the higher side of the data.
+
 
 
 #boxplot nyt9
@@ -122,16 +133,239 @@ boxplot (nyt9$Age, nyt9$Impressions,
          col = c("orange", "purple"))
 summary(nyt9$Age)
 summary(nyt9$Impressions)
+#Age statistics are in line with the previous datasets, with a median of 31, a mean of 29.45, and a range from 0 to 108.
+#Impressions has a median of 5 and a mean just below 5. 
+#In the boxplot for nyt9, the distribution of age and impressions aligns with the previous datasets, with most data clustered at the lower end of the scale.
 
 
 
-# b)normality test
+
+
+# b)Normality test
+
+#Shapiro-Wilk test for Age and Impressions for   nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, and nyt9, 
 
 dim(nyt3)
+help("rnorm")
 
-#Used Anderson Darling test to check for normality, could not use Shapiro Wilk because dataset is too large and above 3 and 5000 specified for Shapiro Wilktest
+#Since the data is above 5000, i have decided to pick a sample data i will use for Shapiro-Wilk test
+# Sample size of the data i will use to perform my Shapiro-Wilk test will be 4000 
+#nyt3
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt3_Age <- sample(nyt3$Age, sample_size)
 
-#Anderson-Darling test for Age and Impressions
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt3_Age <- shapiro.test(sample_nyt3_Age )
+
+# Print the test result
+print(shapiro_nyt3_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressions variable
+sample_nyt3_Impressions <- sample(nyt3$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt3_Impressions <- shapiro.test(sample_nyt3_Impressions )
+
+# Print the test result
+print(shapiro_nyt3_Impressions)
+
+#nyt4
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt4_Age <- sample(nyt4$Age, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt4_Age <- shapiro.test(sample_nyt4_Age )
+
+# Print the test result
+print(shapiro_nyt4_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressions variable
+sample_nyt4_Impressions <- sample(nyt4$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt4_Impressions <- shapiro.test(sample_nyt4_Impressions )
+
+# Print the test result
+print(shapiro_nyt4_Impressions)
+
+
+
+#nyt5
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt5_Age <- sample(nyt5$Age, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt5_Age <- shapiro.test(sample_nyt5_Age )
+
+# Print the test result
+print(shapiro_nyt5_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressiona variable
+sample_nyt5_Impressions <- sample(nyt5$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt5_Impressions <- shapiro.test(sample_nyt5_Impressions )
+
+# Print the test result
+print(shapiro_nyt5_Impressions)
+
+
+
+#nyt6
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt6_Age <- sample(nyt6$Age, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt6_Age <- shapiro.test(sample_nyt6_Age )
+
+# Print the test result
+print(shapiro_nyt6_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressions variable
+sample_nyt6_Impressions <- sample(nyt6$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt6_Impressions <- shapiro.test(sample_nyt6_Impressions )
+
+# Print the test result
+print(shapiro_nyt6_Impressions)
+
+
+
+#nyt7
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt7_Age <- sample(nyt7$Age, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt7_Age <- shapiro.test(sample_nyt7_Age )
+
+# Print the test result
+print(shapiro_nyt7_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressions variable
+sample_nyt7_Impressions <- sample(nyt7$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt7_Impressions <- shapiro.test(sample_nyt7_Impressions )
+
+# Print the test result
+print(shapiro_nyt7_Impressions)
+
+
+#nyt8
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt8_Age <- sample(nyt8$Age, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt8_Age <- shapiro.test(sample_nyt8_Age )
+
+# Print the test result
+print(shapiro_nyt8_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressions variable
+sample_nyt8_Impressions <- sample(nyt8$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt8_Impressions <- shapiro.test(sample_nyt8_Impressions )
+
+# Print the test result
+print(shapiro_nyt8_Impressions)
+
+
+
+
+
+
+#nyt9
+#For Age
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Age variable
+sample_nyt9_Age <- sample(nyt9$Age, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt9_Age <- shapiro.test(sample_nyt9_Age )
+
+# Print the test result
+print(shapiro_nyt9_Age)
+
+
+#For Impressions
+sample_size <- 4000
+# Set a seed for reproducibility
+set.seed(5000)
+# Sample 2000 random data points from the Impressions variable
+sample_nyt9_Impressions <- sample(nyt9$ Impressions, sample_size)
+
+# Perform the Shapiro-Wilk test on the sample
+shapiro_nyt9_Impressions <- shapiro.test(sample_nyt9_Impressions )
+
+# Print the test result
+print(shapiro_nyt9_Impressions)
+
+
+
+#None of the datasets exhibited normal distributions for both the Age and Impressions variables based on the Shapiro-Wilk tests i conducted. So, i will use Anderson Darling test too, to be very sure of my result
+
+
+#Anderson Darling test to check for normality of my dataset to compare the shapiro wilk test
+
+#Anderson-Darling test for Age and Impressions for   nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, and nyt9, 
 
 #nyt3
 ad_nyt3  <- ad.test(nyt3$Age)
@@ -185,6 +419,10 @@ print(ad_nyt9)
 
 ad_nyt9  <- ad.test(nyt9$Impressions)
 print(ad_nyt9)
+#For both Age and Impressions in nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, and nyt9, the data deviates significantly from a normal distribution as a result the null hypothesis (i.e., p-value > 0.05) was rejected as the data did not follow a normal distribution
+
+
+
 
 
 #Histogram (Used binwidth = 4, i used breaks parameter to specify bin width)
@@ -229,6 +467,115 @@ hist(nyt8$Impressions, main = "Histogram for nyt8 Impressions ", col = "green", 
 hist(nyt9$Age, main = "Histogram for nyt9 Age", col = "orange", breaks = seq(min(nyt9$Age), max(nyt9$Age) + 4, by = 4))
 
 hist(nyt9$Impressions, main = "Histogram for nyt9 Impressions ", col = "orange", breaks = seq(min(nyt9$Impressions), max(nyt9$Impressions) + 4, by = 4))
+
+
+
+
+#Since my analysis focuses only on Age and Impressions., i will use linear regression model to access the relationship between Age and Impressions in nyt3, nyt4, nyt5, nyt6, nyt7, nyt8, and nyt9 dataset
+
+# for Age in nyt3
+model_Age_nyt3 <- lm(Age ~ Impressions + Clicks, data = nyt3)
+model_Age_nyt3
+
+plot(model_Age_nyt3, pch = 18, col = 'red', which = c(4))
+
+# For Impressions in nyt3
+model_Impressions_nyt3 <- lm(Impressions ~ Age, data = nyt3)
+
+plot(model_Impressions_nyt3, pch = 18, col = 'green', which = c(4))
+
+# Obtain the summary of the model (This will provide information about coefficients, p-values, and R-squared, which can help me understand the strength and significance of the relationship between Age and Impressions.)
+summary(model_Age_nyt3)
+summary(model_Impressions_nyt3)
+
+
+
+# Create linear regression models for Age and Impressions in nyt4
+# for Age in nyt4
+model_Age_nyt4 <- lm(Age ~ Impressions + Clicks, data = nyt4)
+model_Age_nyt4
+
+plot(model_Age_nyt4, pch = 18, col = 'blue', which = c(4))
+
+# For Impressions in nyt4
+model_Impressions_nyt4 <- lm(Impressions ~ Age  + Clicks, data = nyt4)
+plot(model_Impressions_nyt4, pch = 18, col = 'pink', which = c(4))
+summary(model_Age_nyt4)
+summary(model_Impressions_nyt4)
+
+
+
+# Create linear regression models for Age and Impressions in nyt5
+# for Age in nyt5
+model_Age_nyt5 <- lm(Age ~ Impressions + Clicks, data = nyt5)
+model_Age_nyt5
+
+plot(model_Age_nyt5, pch = 18, col = 'black', which = c(4))
+
+# For Impressions in nyt5
+model_Impressions_nyt5 <- lm(Impressions ~ Age  + Clicks, data = nyt5)
+plot(model_Impressions_nyt5, pch = 18, col = 'red', which = c(4))
+summary(model_Age_nyt5)
+summary(model_Impressions_nyt5)
+
+
+# Create linear regression models for Age and Impressions in nyt6
+# for Age in nyt6
+model_Age_nyt6 <- lm(Age ~ Impressions + Clicks, data = nyt6)
+model_Age_nyt6
+
+plot(model_Age_nyt6, pch = 18, col = 'yellow', which = c(4))
+
+# For Impressions in nyt6
+model_Impressions_nyt6 <- lm(Impressions ~ Age  + Clicks, data = nyt6)
+plot(model_Impressions_nyt6, pch = 18, col = 'green', which = c(4))
+summary(model_Age_nyt6)
+summary(model_Impressions_nyt6)
+
+
+
+# Create linear regression models for Age and Impressions in nyt7
+# for Age in nyt7
+model_Age_nyt7 <- lm(Age ~ Impressions + Clicks, data = nyt7)
+model_Age_nyt7
+
+plot(model_Age_nyt7, pch = 18, col = 'brown', which = c(4))
+
+# For Impressions in nyt7
+model_Impressions_nyt7 <- lm(Impressions ~ Age  + Clicks, data = nyt7)
+plot(model_Impressions_nyt7, pch = 18, col = 'blue', which = c(4))
+summary(model_Age_nyt7)
+summary(model_Impressions_nyt7)
+
+
+
+# Create linear regression models for Age and Impressions in nyt8
+# for Age in nyt8
+model_Age_nyt8 <- lm(Age ~ Impressions + Clicks, data = nyt8)
+model_Age_nyt8
+
+plot(model_Age_nyt8, pch = 18, col = 'green', which = c(4))
+
+# For Impressions in nyt8
+model_Impressions_nyt8<- lm(Impressions ~ Age  + Clicks, data = nyt8)
+plot(model_Impressions_nyt8, pch = 18, col = 'pink', which = c(4))
+summary(model_Age_nyt8)
+summary(model_Impressions_nyt8)
+
+
+
+# Create linear regression models for Age and Impressions in nyt9
+# for Age in nyt9
+model_Age_nyt9 <- lm(Age ~ Impressions + Clicks, data = nyt9)
+model_Age_nyt9
+
+plot(model_Age_nyt9, pch = 18, col = 'red', which = c(4))
+
+# For Impressions in nyt9
+model_Impressions_nyt9 <- lm(Impressions ~ Age  + Clicks, data = nyt9)
+plot(model_Impressions_nyt9, pch = 18, col = 'green', which = c(4))
+summary(model_Age_nyt9)
+summary(model_Impressions_nyt9)
 
 
 
