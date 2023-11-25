@@ -17,6 +17,6 @@ Lab 2
 Started Lab 2 today using the multivariate. csv file 
 
 Resources - 
-    Class presentation slides 
-    https://www.w3schools.com/r/
+    Class presentation slides - 
+    https://www.w3schools.com/r/,
     https://cran.r-project.org/
