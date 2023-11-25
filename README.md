@@ -1,6 +1,6 @@
 # -DataAnalyticsFall2023_NwachukwuOgochukwuGloria
 
-Welcome to my repository!
+Welcome to my Data Analytics Class repository!
 
 Here, you'll find a comprehensive collection of the labs, assignments, and projects I've successfully completed in my Data Analytics class utilizing R.
 
