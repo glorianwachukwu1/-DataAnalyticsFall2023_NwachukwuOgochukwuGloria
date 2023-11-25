@@ -16,9 +16,6 @@ it was pretty much straightforward since I used Climate and Biodiversity data fr
 Lab 2
 Started Lab 2 today using the multivariate. csv file 
 
-
-
-
 Resources - 
     Class presentation slides 
     https://www.w3schools.com/r/
